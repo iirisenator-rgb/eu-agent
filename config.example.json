@@ -1,0 +1,40 @@
+{
+  "WATCH_URLS": [
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/topic-announcements/50133351"
+  ],
+  "KEYWORDS": [
+    "governance",
+    "public policy and administration",
+    "science, technology and innovation policy",
+    "digital sovereignty",
+    "open strategic autonomy",
+    "competitiveness",
+    "sustainability",
+    "ethics of care",
+    "just and resilient cities",
+    "architectural and urban planning education",
+    "participatory design",
+    "living labs",
+    "spatial inequalities",
+    "energy resilience",
+    "modular energy systems",
+    "capacity building",
+    "rare-earth recycling",
+    "circular manufacturing",
+    "additive manufacturing",
+    "critical raw materials",
+    "space system resilience",
+    "sustainable space systems",
+    "ai literacy",
+    "knowledge valorisation",
+    "responsible ai",
+    "green chemistry",
+    "mechanochemistry",
+    "reactive extrusion",
+    "direct current microgrids",
+    "sustainable electrification",
+    "energy efficiency"
+  ],
+  "MAX_CRAWL_PAGES": 20,
+  "MAX_CRAWL_DEPTH": 2
+}
