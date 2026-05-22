@@ -219,6 +219,25 @@ def send_telegram(message: str) -> None:
     resp = requests.post(api, json={"chat_id": chat_id, "text": message}, timeout=30)
     resp.raise_for_status()
 
+def send_outlook_email(subject: str, body: str) -> None:
+    sender = os.getenv("OUTLOOK_EMAIL", "").strip()
+    password = os.getenv("OUTLOOK_PASSWORD", "").strip()
+    recipient = os.getenv("OUTLOOK_EMAIL", "").strip()
+
+    if not sender or not password:
+        print("[warn] Outlook email is not configured")
+        return
+
+    msg = MIMEText(body)
+    msg["Subject"] = subject
+    msg["From"] = sender
+    msg["To"] = recipient
+
+    with smtplib.SMTP("smtp.office365.com", 587) as server:
+        server.starttls()
+        server.login(sender, password)
+        server.send_message(msg)
+
 
 def crawl(start_urls: Iterable[str], max_pages: int = MAX_CRAWL_PAGES, max_depth: int = MAX_CRAWL_DEPTH) -> list[tuple[str, str]]:
     """Breadth-first crawl within the EU portal, starting from the announcement page."""
@@ -290,9 +309,11 @@ def main() -> int:
 
     save_state(state_file, seen)
 
-    if new_hits:
-        send_telegram(format_message(new_hits))
-        return 0
+   if new_hits:
+    message = format_message(new_hits)
+    send_telegram(message)
+    send_outlook_email("EU watcher: new match(es)", message)
+    return 0
 
     print("No new matches.")
     return 0
