@@ -22,6 +22,8 @@ from typing import Iterable
 from urllib.parse import urljoin, urlparse, urldefrag
 
 import requests
+import smtplib
+from email.mime.text import MIMEText
 from bs4 import BeautifulSoup
 
 try:
