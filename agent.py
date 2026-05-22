@@ -309,11 +309,11 @@ def main() -> int:
 
     save_state(state_file, seen)
 
-   if new_hits:
-    message = format_message(new_hits)
-    send_telegram(message)
-    send_outlook_email("EU watcher: new match(es)", message)
-    return 0
+    if new_hits:
+        message = format_message(new_hits)
+        send_telegram(message)
+        send_outlook_email("EU watcher: new match(es)", message)
+        return 0
 
     print("No new matches.")
     return 0
